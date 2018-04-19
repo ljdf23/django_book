@@ -10,4 +10,4 @@ class Toy(models.Model):
 
     class Meta:
         #It is a tuple
-        ordering = ('name')
+        ordering = ('name',)
