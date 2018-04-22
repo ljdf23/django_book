@@ -9,6 +9,7 @@ from toys.serializers import ToySerializer
 
 # Create your views here.
 
+
 class JSONResponse(HttpResponse):
     def __init__(self, data, **kwargs):
         content = JSONRenderer().render(data)
@@ -26,8 +27,10 @@ class JSONResponse(HttpResponse):
             toys_serializer = ToySerializer(data=toy_data)
             if toys_serializer.is_valid():
                 toys_serializer.save()
-                return JSONResponse(toys_serializer.data, status=status.HTTP_201_CREATED)
-            return JSONResponse(toys_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return JSONResponse(toys_serializer.data,
+                                    status=status.HTTP_201_CREATED)
+            return JSONResponse(toys_serializer.errors,
+                                status=status.HTTP_400_BAD_REQUEST)
 
     @csrf_exempt
     def toy_detail(request, pk):
@@ -46,7 +49,8 @@ class JSONResponse(HttpResponse):
             if toy_serializer.is_valid():
                 toy_serializer.save()
                 return JSONResponse(toy_serializer.data)
-            return JSONResponse(toy_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return JSONResponse(toy_serializer.errors,
+                                status=status.HTTP_400_BAD_REQUEST)
 
         elif request.method == 'DELETE':
             toy.delete()
