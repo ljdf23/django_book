@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:/Luis/Python/Django_Book_Environment/Scripts/python.exe",
+    "python.pythonPath": "C:/Users/Luis/LJ-DjangoRest/02/Scripts/python.exe",
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": false,
     "python.formatting.provider": "autopep8"
