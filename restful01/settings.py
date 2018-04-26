@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #Django rest framework
     'rest_framework',
-    #Toys application
-    'toys.apps.ToysConfig'
+    #drones application
+    'drones.apps.DronesConfig'
 ]
 
 MIDDLEWARE = [
@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'restful01.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'drones', #os.path.join(BASE_DIR, 'db.sqlite3'),
+        'USER': 'ldurazo',
+        'PASSWORD': 'AABBcc22',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
     }
 }
 

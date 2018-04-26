@@ -13,7 +13,7 @@ def toy_list(request):
         return Response(toys_serializer.data)
     elif request.method == 'POST':
         toy_serializer = ToySerializer(data=request.data)
-        if toy_seralizer.is_valid():
+        if toy_serializer.is_valid():
             toy_serializer.save()
             return Response(toy_serializer.data, status = status.HTTP_201_CREATED)
         return Response(toy_serializer.errors, status = status.HTTP_400_BAD_REQUEST)
