@@ -8,7 +8,7 @@ urlpatterns = [
     ), name=views.DronesCategoryDetail.name),
     url(r'^drones/$', views.DroneList.as_view(), name=views.DroneList.name),
     url(r'^drones/(?P<pk>[0-9]+)$',
-        views.DroneList.as_view(), name=views.DroneDetail.name),
+        views.DroneDetail.as_view(), name=views.DroneDetail.name),
     url(r'^pilots/$', views.PilotList.as_view(), name=views.PilotList.name),
     url(r'^pilots/(?P<pk>[0-9]+)$',
         views.PilotDetail.as_view(), name=views.PilotDetail.name),
