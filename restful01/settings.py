@@ -39,7 +39,15 @@ INSTALLED_APPS = [
     #Django rest framework
     'rest_framework',
     #drones application
-    'drones.apps.DronesConfig'
+    'drones.apps.DronesConfig',
+    'toys.apps.ToysConfig',
+    'django_extensions'   
+]
+
+SHELL_PLUS_PRE_IMPORTS = [
+    ('drones.models','*'),
+    ('drones.serializers', '*'),
+    ('drones.views', '*')
 ]
 
 MIDDLEWARE = [
@@ -77,6 +85,11 @@ WSGI_APPLICATION = 'restful01.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
+    #  'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+    # }
+
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'drones', #os.path.join(BASE_DIR, 'db.sqlite3'),

@@ -10,6 +10,7 @@ from drones.serializers import DronesCategorySerializer
 from drones.serializers import DroneSerializer
 from drones.serializers import PilotSerializer
 from drones.serializers import PilotCompetitionSerializer
+from drones.serializers import PilotMinimalSerializer
 
 
 class DronesCategoryList(generics.ListCreateAPIView):
@@ -37,9 +38,10 @@ class DroneDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class PilotList(generics.ListCreateAPIView):
-    queryset = Pilot.objects.all()
-    serializer_class = PilotSerializer
+    queryset = Pilot.objects.all() 
+    serializer_class = PilotMinimalSerializer
     name = 'pilot-list'
+    
 
 
 class PilotDetail(generics.RetrieveUpdateDestroyAPIView):

@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here
-
+ 
 
 class DronesCategory(models.Model):
     name = models.CharField(max_length=250)
@@ -16,7 +16,7 @@ class DronesCategory(models.Model):
 class Drone(models.Model):
     name = models.CharField(max_length=250)
     drones_category = models.ForeignKey(
-        DronesCategory, related_name='drones', on_delete=models.CASCADE)
+        DronesCategory, related_name='drones', on_delete=models.CASCADE, default=1)
     manufacturing_date = models.DateTimeField()
     has_it_completed = models.BooleanField(default=False)
     inserted_timestamp = models.DateTimeField(auto_now_add=True)
@@ -33,6 +33,7 @@ class Pilot(models.Model):
     FEMALE = 'F'
     GENDER_CHOICES = ((MALE, 'Male'), (FEMALE, 'Female'),)
 
+    keys = 'k'
     name = models.CharField(max_length=150, blank=False, default='')
     gender = models.CharField(
         max_length=2, choices=GENDER_CHOICES, default=MALE,)
