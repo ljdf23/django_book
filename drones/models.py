@@ -4,7 +4,7 @@ from django.db import models
  
 
 class DronesCategory(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, unique=True)
 
     class Meta:
         ordering = ('name',)
@@ -14,7 +14,7 @@ class DronesCategory(models.Model):
 
 
 class Drone(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, unique=True)
     drones_category = models.ForeignKey(
         DronesCategory, related_name='drones', on_delete=models.CASCADE, default=1)
     manufacturing_date = models.DateTimeField()
@@ -34,7 +34,7 @@ class Pilot(models.Model):
     GENDER_CHOICES = ((MALE, 'Male'), (FEMALE, 'Female'),)
 
     keys = 'k'
-    name = models.CharField(max_length=150, blank=False, default='')
+    name = models.CharField(max_length=150, blank=False, default='', unique=True)
     gender = models.CharField(
         max_length=2, choices=GENDER_CHOICES, default=MALE,)
     races_count = models.IntegerField()
