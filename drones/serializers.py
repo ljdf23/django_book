@@ -25,11 +25,11 @@ class DroneMinimalSerializer(serializers.ModelSerializer):
         fields = ('name', 'has_it_completed')
  
 class DronesCategorySerializer(serializers.ModelSerializer):
-    # drones = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='drone-detail')
+    drones = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='drone-detail')
  
     #drones = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
     #drones = serializers.StringRelatedField(many=True)
-    drones = DroneSerializer(many=True, read_only=True)
+    #drones = DroneSerializer(many=True, read_only=True)
 
     class Meta:
         model = DronesCategory
