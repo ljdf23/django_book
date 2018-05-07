@@ -20,8 +20,6 @@ class DronesCategoryList(generics.ListCreateAPIView):
     serializer_class = DronesCategorySerializer
     name = 'dronescategory-list'
 
-    print('hi')
-
     filter_fields = ('name',) #under the hood, django will automatically create a FilterSet class and associate it to this.
     search_fields = ('^name',)
     ordering_fields = ('name',)
@@ -38,9 +36,12 @@ class DroneList(generics.ListCreateAPIView):
     serializer_class = DroneSerializer
     name = 'drone-list'
 
-    filter_fields = ('name','drone_category','manufacturing_date','has_it_competed',)
-    search_fields = ('^name',)
+    filter_fields = ('name','drones_category','manufacturing_date','has_it_completed',)
+    search_fields = ('=name',)
     ordering_fields = ('name','manufacturing_date',)
+
+    def perform_create (self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class DroneDetail(generics.RetrieveUpdateDestroyAPIView):

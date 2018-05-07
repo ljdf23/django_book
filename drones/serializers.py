@@ -4,16 +4,31 @@ from drones.models import Pilot
 from drones.models import Competition
 from drones.models import Drone
 from drones import views
+from django.contrib.auth.models import User
+
+class UserDroneSerializer(serializers.HyperlinkedModelSerializer):
+    
+    class Meta:
+        model = Drone
+        fields = ('url', 'name')
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    drones = UserDroneSerializer(many = True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = ('url','pk','username','drone')
 
 class DroneSerializer(serializers.ModelSerializer):
     # display the category name
     drones_category = serializers.SlugRelatedField(
         queryset=DronesCategory.objects.all(), slug_field='name')
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Drone
         fields = ('name', 'drones_category', 'manufacturing_date',
-                  'has_it_completed', 'inserted_timestamp')
+                  'has_it_completed', 'inserted_timestamp','owner')
 
     def __unicode__(self):
         return '%d: %s' % (self.name, self.has_it_completed)
