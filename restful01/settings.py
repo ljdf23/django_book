@@ -109,11 +109,11 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'drones', #os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': 'ldurazo',
-        'PASSWORD': 'AABBcc22',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'NAME': 'residenciadb', #os.path.join(BASE_DIR, 'db.sqlite3'),
+        'USER': 'residenciauser',
+        'PASSWORD': 'beyAf&Fu&22r', 
+        'HOST':  'stg-gnt.clfjvmec2dmd.us-east-1.rds.amazonaws.com',
+        'PORT': '7000'
     }
 }
 
