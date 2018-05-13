@@ -76,7 +76,7 @@ class PilotMinimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pilot
         fields = ( 'name', 'id', 'gender', 'gender_description',
-                  'races_count', 'inserted_timestamp' ,'competitions')
+                  'races_count', 'inserted_timestamp' ,'competitions','key')
 
 class PilotSerializer(serializers.HyperlinkedModelSerializer):
     competitions = CompetitionSerializer(many=True, read_only=True)
