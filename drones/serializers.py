@@ -87,7 +87,7 @@ class PilotSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Pilot
         fields = ( 'name', 'id', 'gender', 'gender_description',
-                  'races_count', 'inserted_timestamp' ,'competitions')
+                  'races_count', 'inserted_timestamp' ,'competitions','keys')
  
 class PilotCompetitionSerializer(serializers.ModelSerializer):
     # display the pilot's name
