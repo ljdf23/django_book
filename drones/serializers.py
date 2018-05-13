@@ -82,11 +82,12 @@ class PilotSerializer(serializers.HyperlinkedModelSerializer):
     competitions = CompetitionSerializer(many=True, read_only=True)
     gender = serializers.ChoiceField(choices=Pilot.GENDER_CHOICES)
     gender_description = serializers.CharField(source='get_gender_display', read_only=True)
+    keys = 'test touch'
   
     class Meta:
         model = Pilot
         fields = ( 'name', 'id', 'gender', 'gender_description',
-                  'races_count', 'inserted_timestamp' ,'competitions')
+                  'races_count', 'inserted_timestamp' ,'competitions', 'keys')
  
 class PilotCompetitionSerializer(serializers.ModelSerializer):
     # display the pilot's name
